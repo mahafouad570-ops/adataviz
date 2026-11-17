@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ecebe4;
+    color: #31432a;
+}
+
+header {
+    background-color: #31432a;
+    color: white;
+    text-align: center;
+    padding: 32px 16px 64px;
+}
+
+.surtitre {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+h1 {
+    font-size: 32px;
+    margin: 8px 0;
+}
+
+.sous-titre {
+    font-size: 16px;
+    margin: 0;
+}
+
+main {
+    padding: 0 16px 32px;
+}
+
+.filtres {
+    background-color: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: -40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #c9cfc3;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #d9b44a;
+    color: #31432a;
+    border: none;
+    border-radius: 999px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.compteur {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 24px 0 16px;
+}
+
+.cartes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.carte {
+    position: relative;
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    padding-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carte-image {
+    height: 140px;
+    background-color: #c9d4bc;
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #d9b44a;
+    color: #31432a;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+
+.carte h2,
+.carte p {
+    margin: 8px 16px 0;
+}
+
+.nom-latin {
+    font-style: italic;
+    color: #5a6b52;
+}
+
+.hauteur {
+    font-weight: bold;
+}
+
+footer {
+    background-color: #31432a;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    main {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    .filtres {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    button {
+        margin-left: auto;
+        padding: 12px 32px;
+    }
+
+    .cartes {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .carte {
+        width: calc(50% - 8px);
+    }
+}
