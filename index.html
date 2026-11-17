@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Doyens de Paris</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <p class="surtitre">Arbres remarquables de Paris</p>
+      <h1>Les Doyens de Paris</h1>
+      <p class="sous-titre">
+        Choisissez un arrondissement et découvrez ses arbres les plus
+        remarquables.
+      </p>
+    </header>
+    <main>
+      <section class="filtres">
+        <label for="arrondissement">Arrondissement</label>
+        <select id="arrondissement">
+          <option value="">Tous</option>
+          <option value="1">1er</option>
+          <option value="2">2e</option>
+          <option value="3">3e</option>
+        </select>
+        <button type="button">Voir les arbres</button>
+      </section>
+      <p class="compteur">2 arbres remarquables</p>
+      <section class="cartes">
+        <article class="carte">
+            <span class="badge">Symbolique</span>
+            <div class="carte-image"></div>
+            <h2>Marronnier d'Inde</h2>
+            <p class="nom-latin">Aesculus hippocastanum</p>
+            <p class="adresse">Jardin Anne Frank, 14 impasse Berthhaud</p>
+            <p class="hauteur">Hauteur : 20 m</p>
+        </article>
+         <article class="carte">
+            <span class="badge">Paysager</span>
+            <div class="carte-image"></div>
+            <h2>Ficus</h2>
+            <p class="nom-latin">Ficus carica</p>
+            <p class="adresse">Square Georges Cain, 8 Rue Payenne</p>
+            <p class="hauteur">Hauteur : 10 m</p>
+        </article>
+      </section>
+    </main>
+    <footer>
+        <p>Données : Open Data Paris</p>
+    </footer>
+  </body>
+</html>
