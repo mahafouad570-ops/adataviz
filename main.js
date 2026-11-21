@@ -1,7 +1,7 @@
-import { formaterDonnee } from "./utils.js";
+import { filtrerParArrondissement, formaterDonnee } from "./utils.js";
 
 const URL_API =
-  "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arbresremarquablesparis/records?limit=100";
+  "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arbresremarquablesparis/exports/json";
 function creerCarte(arbre) {
   const carte = document.createElement("article");
   carte.classList.add("carte");
@@ -33,15 +33,33 @@ function creerCarte(arbre) {
   carte.append(badge, image, titre, nomLatin, adresse, hauteur);
   return carte;
 }
+function remplirArrondissements(arbres) {
+    const select = document.querySelector("#arrondissement")
+    const arrondissements = [...new Set(arbres.map(arbre => arbre.arrondissement))].sort()
+    arrondissements.forEach(nom => {
+        const option = document.createElement("option")
+        option.value = nom
+        option.textContent = nom
+        select.append(option)
+    })
+}
 
 async function recupererArbres() {
   try {
     const reponse = await fetch(URL_API);
     const donnees = await reponse.json();
     const conteneur = document.querySelector(".cartes")
-    const arbres = donnees.results.map(formaterDonnee)
+    const arbres = donnees.map(formaterDonnee)
+    remplirArrondissements(arbres)
     arbres.forEach(arbre => conteneur.append(creerCarte(arbre)))
-    document.querySelector(".compteur").textContent = donnees.total_count + " arbres remarquables"
+    document.querySelector(".compteur").textContent = arbres.length + " arbres remarquables"
+    document.querySelector("button").addEventListener("click", () => {
+        const choix = document.querySelector("#arrondissement").value
+        const resultat = filtrerParArrondissement(arbres, choix)
+        conteneur.innerHTML = ""
+        resultat.forEach(arbre => conteneur.append(creerCarte(arbre)))
+        document.querySelector(".compteur").textContent = resultat.length + " arbres remarquables"
+    })
   } catch (erreur) {
     console.log("Erreur :", erreur);
   }
