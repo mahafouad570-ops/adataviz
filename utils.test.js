@@ -1,4 +1,4 @@
-import { formaterDonnee } from "./utils.js";
+import { formaterDonnee, filtrerParArrondissement } from "./utils.js";
 
 test("formaterDonnee renvoie un objet propre", () => {
     const arbreBrut = {
@@ -21,4 +21,22 @@ test("formaterDonnee renvoie un objet propre", () => {
         hauteur: 12,
         photo: "photo.jpg"
     })
+})
+
+test("filtrerParArrondissement garde seulment les arbres de l'arrondissement choisi", () => {
+    const arbres= [
+        { nom:"Orme", arrondissement:"PARIS 4E ARRDT" },
+        { nom:"Chéne", arrondissement:"PARIS 11E ARRDT" },
+    ]
+ expect(filtrerParArrondissement(arbres, "PARIS 4E ARRDT")).toEqual([
+        { nom:"Orme", arrondissement:"PARIS 4E ARRDT" }
+    ])
+})
+
+test("filtrerParArrondissement renvoie tous les arbres si aucun choix", ()=> {
+    const arbres = [
+        { nom:"Orme", arrondissement:"PARIS 4E ARRDT" },
+        { nom:"Chéne", arrondissement:"PARIS 11E ARRDT" },
+    ]
+    expect(filtrerParArrondissement(arbres,"")).toEqual(arbres)
 })

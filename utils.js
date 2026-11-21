@@ -9,3 +9,10 @@ export function formaterDonnee(arbre) {
         photo:arbre.com_url_photo1
     }
 }
+
+export function filtrerParArrondissement(arbres, arrondissement) {
+    if (arrondissement === "") {
+        return arbres
+    }
+    return arbres.filter(arbre => arbre.arrondissement === arrondissement)
+}

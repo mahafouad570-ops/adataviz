@@ -38,7 +38,10 @@ async function recupererArbres() {
   try {
     const reponse = await fetch(URL_API);
     const donnees = await reponse.json();
-    console.log(donnees);
+    const conteneur = document.querySelector(".cartes")
+    const arbres = donnees.results.map(formaterDonnee)
+    arbres.forEach(arbre => conteneur.append(creerCarte(arbre)))
+    document.querySelector(".compteur").textContent = donnees.total_count + " arbres remarquables"
   } catch (erreur) {
     console.log("Erreur :", erreur);
   }

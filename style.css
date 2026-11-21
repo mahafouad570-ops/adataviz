@@ -89,7 +89,10 @@ button {
 }
 
 .carte-image {
-    height: 140px;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
     background-color: #c9d4bc;
 }
 
